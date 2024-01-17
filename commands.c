@@ -9,12 +9,13 @@
 void execute_command(char *line, int line_number)
 {
 	int i, neg = 1;
-	char *a = "\n ", *value, *command;
+	char *a = "\n\t ", *value, *command;
 	instruction_t command_lists[] = {
 		{"push", add_node_stack},{"pall", print_stack},{NULL, NULL}
 	};
 
-	command = strtok(line, a);
+	if ((command = strtok(line, a)) == NULL)
+		return;
 	if (strcmp(command, "push") == 0)
 	{
 		value = strtok(NULL, a);

@@ -27,6 +27,8 @@ int main(int argc, char **argv)
 		execute_command(line, line_number);
 		line_number++;
 	}
+	free(line);
+	fclose(text);
 	free_stack();
 
 	return (0);
