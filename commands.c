@@ -13,11 +13,12 @@ void execute_command(char *line, int ln, stack_t **head)
 	char *a = "\n\t ", *value, *command;
 	instruction_t command_lists[] = {
 		{"push", add_node_stack}, {"pall", print_stack}, {"pint", top_print},
-		{NULL, NULL}
+		{"pop", pop_stack}, {"swap", swap_stack}, {"add", add_stack},
+		{"sub", sub_stack}, {"div", div_stack}, {NULL, NULL}
 	};
 
 	command = strtok(line, a);
-	if (command == NULL)
+	if (command == NULL || strcmp(command, "nop") == 0)
 		return;
 	if (strcmp(command, "push") == 0)
 	{
@@ -27,10 +28,11 @@ void execute_command(char *line, int ln, stack_t **head)
 			value = value + 1;
 			neg = -1;
 		}
-		if (value == NULL)
+		if (value == NULL || numbercheck(value) == 0)
+		{
+			free(line);
 			error_f(*head, 4, ln);
-		if (numbercheck(value) == 0)
-			error_f(*head, 4, ln);
+		}
 		add_node_stack(head, atoi(value) * neg);
 		return;
 	}
@@ -42,5 +44,6 @@ void execute_command(char *line, int ln, stack_t **head)
 			return;
 		}
 	}
+	free(line);
 	error_f(*head, 2, ln, command);
 }
