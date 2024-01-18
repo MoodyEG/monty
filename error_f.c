@@ -76,10 +76,10 @@ void error_f2(stack_t *head, int code, ...)
 			fprintf(stderr, "L%d: division by zero\n", va_arg(info, int));
 			break;
 		case 12:
-			fprintf(stderr, "L%d:  can't mul, stack too short\n", va_arg(info, int));
+			fprintf(stderr, "L%d: can't mul, stack too short\n", va_arg(info, int));
 			break;
 		case 13:
-			fprintf(stderr, "L%d:  can't mod, stack too short\n", va_arg(info, int));
+			fprintf(stderr, "L%d: can't mod, stack too short\n", va_arg(info, int));
 			break;
 		case 14:
 			fprintf(stderr, "L%d: can't pchar, value out of range\n",
