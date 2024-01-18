@@ -27,7 +27,10 @@ void pstr(stack_t **head, unsigned int ln)
 
 	(void)ln;
 	if (*head == NULL || head == NULL)
+	{
 		printf("\n");
+		return;
+	}
 	temp = *head;
 	while (temp)
 	{
