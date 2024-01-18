@@ -3,9 +3,10 @@
 /**
  * error_f - prints error to stderr
  * @code: error code
+ * @head: the head to free
  * Return: no return
  */
-void error_f(int code, ...)
+void error_f(stack_t *head, int code, ...)
 {
 	va_list info;
 
@@ -27,10 +28,10 @@ void error_f(int code, ...)
 			fprintf(stderr, "Error: malloc failed\n");
 			break;
 		case 4:
-			fprintf(stderr, "L%d: usage: push integer\n", line_number);
+			fprintf(stderr, "L%d: usage: push integer\n", va_arg(info, int));
 			break;
 	}
 	va_end(info);
-	free_stack();
+	free_stack(head);
 	exit(EXIT_FAILURE);
 }

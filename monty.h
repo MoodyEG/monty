@@ -40,17 +40,17 @@ typedef struct instruction_s
 } instruction_t;
 
 extern stack_t *head;
-extern int line_number;
+extern int ln;
 
 /*commands handling*/
-void execute_command(char *line,  int line_number);
+void execute_command(char *line,  int line_number, stack_t **head);
 /*stack handling*/
 void add_node_stack(stack_t **head, unsigned int n);
 void print_stack(stack_t **head, unsigned int n);
 stack_t creathead(stack_t **head);
-void free_stack(void);
+void free_stack(stack_t *head);
 /*error handling*/
-void error_f(int code, ...);
+void error_f(stack_t *head, int code, ...);
 /*other tools*/
 int numbercheck(char *input);
 

@@ -12,7 +12,7 @@ void add_node_stack(stack_t **head, unsigned int n)
 
 	new = malloc(sizeof(stack_t));
 	if (!new)
-		error_f(3);
+		error_f(*head, 3);
 	new->n = n;
 	new->next = *head;
 	new->prev = NULL;
@@ -29,7 +29,6 @@ void add_node_stack(stack_t **head, unsigned int n)
  */
 void print_stack(stack_t **head, unsigned int n)
 {
-	size_t count = 0;
 	stack_t *temp;
 
 	(void)n;
@@ -38,16 +37,15 @@ void print_stack(stack_t **head, unsigned int n)
 	{
 		printf("%i\n", temp->n);
 		temp = temp->next;
-		count++;
 	}
 }
 
 /**
  * free_stack - frees a stack_t list.
- *
+ * @head: head of the list
  * Return: no return
  */
-void free_stack(void)
+void free_stack(stack_t *head)
 {
 	stack_t *temp;
 

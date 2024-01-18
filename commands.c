@@ -3,18 +3,20 @@
 /**
  * execute_command - excute commands
  * @line: the full command
- * @line_number: line number
+ * @ln: line number
+ * @head: head of the list
  * Return: no return
  */
-void execute_command(char *line, int line_number)
+void execute_command(char *line, int ln, stack_t **head)
 {
 	int i, neg = 1;
 	char *a = "\n\t ", *value, *command;
 	instruction_t command_lists[] = {
-		{"push", add_node_stack},{"pall", print_stack},{NULL, NULL}
+		{"push", add_node_stack}, {"pall", print_stack}, {NULL, NULL}
 	};
 
-	if ((command = strtok(line, a)) == NULL)
+	command = strtok(line, a);
+	if (command == NULL)
 		return;
 	if (strcmp(command, "push") == 0)
 	{
@@ -25,17 +27,17 @@ void execute_command(char *line, int line_number)
 			neg = -1;
 		}
 		if (value == NULL)
-			error_f(4, line_number);
+			error_f(*head, 4, ln);
 		if (numbercheck(value) == 0)
-			error_f(4, line_number);
-		add_node_stack(&head, atoi(value) * neg);
+			error_f(*head, 4, ln);
+		add_node_stack(head, atoi(value) * neg);
 		return;
 	}
 	for (i = 1; command_lists[i].opcode != NULL; i++)
 	{
 		if (strcmp(command, command_lists[i].opcode) == 0)
 		{
-			command_lists[i].f(&head, line_number);
+			command_lists[i].f(head, ln);
 			break;
 		}
 	}
