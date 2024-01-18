@@ -9,6 +9,8 @@
 void error_f(stack_t *head, int code, ...)
 {
 	va_list info;
+	int line = 0;
+	char *name;
 
 	va_start(info, code);
 	switch (code)
@@ -21,8 +23,9 @@ void error_f(stack_t *head, int code, ...)
 			va_arg(info, char *));
 			break;
 		case 2:
-			fprintf(stderr, "L%d: unknown instruction %s\n",
-			va_arg(info, int), va_arg(info, char *));
+			line = va_arg(info, int);
+			name = va_arg(info, char *);
+			fprintf(stderr, "L%d: unknown instruction %s\n", line, name);
 			break;
 		case 3:
 			fprintf(stderr, "Error: malloc failed\n");

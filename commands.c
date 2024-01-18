@@ -38,7 +38,8 @@ void execute_command(char *line, int ln, stack_t **head)
 		if (strcmp(command, command_lists[i].opcode) == 0)
 		{
 			command_lists[i].f(head, ln);
-			break;
+			return;
 		}
 	}
+	error_f(*head, 2, ln, command);
 }
