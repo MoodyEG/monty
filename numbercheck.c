@@ -11,7 +11,7 @@ int numbercheck(char *input)
 
 	while (input[i] != '\0')
 	{
-		if (input[i] <= '0' || input[i] >= '9')
+		if (input[i] < '0' || input[i] > '9')
 			return (0);
 		i++;
 	}
