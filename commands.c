@@ -12,7 +12,8 @@ void execute_command(char *line, int ln, stack_t **head)
 	int i, neg = 1;
 	char *a = "\n\t ", *value, *command;
 	instruction_t command_lists[] = {
-		{"push", add_node_stack}, {"pall", print_stack}, {NULL, NULL}
+		{"push", add_node_stack}, {"pall", print_stack}, {"pint", top_print},
+		{NULL, NULL}
 	};
 
 	command = strtok(line, a);

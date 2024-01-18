@@ -41,6 +41,19 @@ void print_stack(stack_t **head, unsigned int n)
 }
 
 /**
+ * top_print - prints the top element of a stack_t list.
+ * @head: our list
+ * @ln: line number
+ * Return: the number of nodes
+ */
+void top_print(stack_t **head, unsigned int ln)
+{
+	if (*head == NULL || head == NULL)
+		error_f(*head, 5, ln);
+	printf("%d\n", (*head)->n);
+}
+
+/**
  * free_stack - frees a stack_t list.
  * @head: head of the list
  * Return: no return

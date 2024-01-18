@@ -47,6 +47,7 @@ void execute_command(char *line,  int line_number, stack_t **head);
 /*stack handling*/
 void add_node_stack(stack_t **head, unsigned int n);
 void print_stack(stack_t **head, unsigned int n);
+void top_print(stack_t **head, unsigned int n);
 stack_t creathead(stack_t **head);
 void free_stack(stack_t *head);
 /*error handling*/
