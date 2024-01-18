@@ -36,6 +36,43 @@ void error_f(stack_t *head, int code, ...)
 		case 5:
 			fprintf(stderr, "L%d: can't pint, stack empty\n", va_arg(info, int));
 			break;
+		case 6:
+			fprintf(stderr, "L%d: can't pop an empty stack\n", va_arg(info, int));
+			break;
+	}
+	va_end(info);
+	free_stack(head);
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * error_f2 - prints error to stderr
+ * @code: error code
+ * @head: the head to free
+ * Return: no return
+ */
+void error_f2(stack_t *head, int code, ...)
+{
+	va_list info;
+
+	va_start(info, code);
+	switch (code)
+	{
+		case 7:
+			fprintf(stderr, "L%d: can't swap, stack too short\n", va_arg(info, int));
+			break;
+		case 8:
+			fprintf(stderr, "L%d: can't add, stack too short\n", va_arg(info, int));
+			break;
+		case 9:
+			fprintf(stderr, "L%d: can't sub, stack too short\n", va_arg(info, int));
+			break;
+		case 10:
+			fprintf(stderr, "L%d: can't div, stack too short\n", va_arg(info, int));
+			break;
+		case 11:
+			fprintf(stderr, "L%d: division by zero\n", va_arg(info, int));
+			break;
 	}
 	va_end(info);
 	free_stack(head);
