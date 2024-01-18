@@ -39,19 +39,45 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct my_s - OUR opcode and its function
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct my_s
+{
+	char *opcode;
+	int (*f)(stack_t **stack, unsigned int line_number);
+} my_t;
+
 extern stack_t *head;
 extern int ln;
 
 /*commands handling*/
 void execute_command(char *line,  int line_number, stack_t **head);
+
 /*stack handling*/
 void add_node_stack(stack_t **head, unsigned int n);
 void print_stack(stack_t **head, unsigned int n);
 void top_print(stack_t **head, unsigned int n);
+void pop_stack(stack_t **head, unsigned int ln);
+void swap_stack(stack_t **head, unsigned int ln);
 stack_t creathead(stack_t **head);
 void free_stack(stack_t *head);
+
+/*maths*/
+void add_stack(stack_t **head, unsigned int ln);
+void sub_stack(stack_t **head, unsigned int ln);
+void div_stack(stack_t **head, unsigned int ln);
+
 /*error handling*/
 void error_f(stack_t *head, int code, ...);
+void error_f2(stack_t *head, int code, ...);
+
+
 /*other tools*/
 int numbercheck(char *input);
 
