@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * main - our interpeter
+ * main - our main interpeter
  * @argc: number of arguments
  * @argv: the arguments
  * Return: 0 on success. 1 on failure
