@@ -10,7 +10,7 @@ int main(int argc, char **argv)
 {
 	stack_t *head;
 	char *line = NULL;
-	int ln = 1;
+	int ln = 1, type = 1;
 	size_t len = 0;
 	ssize_t read;
 	FILE *text;
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 		read = getline(&line, &len, text);
 		if (read == -1)
 			break;
-		execute_command(line, ln, &head);
+		execute_command(line, ln, &head, &type);
 		ln++;
 	}
 	free(line);

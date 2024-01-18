@@ -57,3 +57,43 @@ void div_stack(stack_t **head, unsigned int ln)
 	pop_stack(head, ln);
 	(*head)->n = i;
 }
+
+/**
+ * mul_stack - multiplies the second top element of the
+ * stack by the top element of the stack.
+ * @head: our list
+ * @ln: line number
+ * Return: no return
+ */
+void mul_stack(stack_t **head, unsigned int ln)
+{
+	int i;
+
+	if (*head == NULL || head == NULL || (*head)->next == NULL)
+		error_f2(*head, 12, ln);
+	i = ((*head)->next)->n;
+	i = i * (*head)->n;
+	pop_stack(head, ln);
+	(*head)->n = i;
+}
+
+/**
+ * mod_stack - computes the rest of the division of the second
+ * top element of the stack by the top element of the stack.
+ * @head: our list
+ * @ln: line number
+ * Return: no return
+ */
+void mod_stack(stack_t **head, unsigned int ln)
+{
+	int i;
+
+	if (*head == NULL || head == NULL || (*head)->next == NULL)
+		error_f2(*head, 13, ln);
+	if ((*head)->n == 0)
+		error_f2(*head, 11, ln);
+	i = ((*head)->next)->n;
+	i = i % (*head)->n;
+	pop_stack(head, ln);
+	(*head)->n = i;
+}

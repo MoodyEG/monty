@@ -4,7 +4,7 @@
  * add_node_stack - adds a new node at the beginning of a stack_t list.
  * @head: our list
  * @n: content of the node to be added
- * Return:  the address of the new element
+ * Return: no return
  */
 void add_node_stack(stack_t **head, unsigned int n)
 {

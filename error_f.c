@@ -26,7 +26,9 @@ void error_f(stack_t *head, int code, ...)
 			line = va_arg(info, int);
 			name = va_arg(info, char *);
 			fprintf(stderr, "L%d: unknown instruction %s\n", line, name);
-			break;
+			va_end(info);
+			free_stack(head);
+			return;
 		case 3:
 			fprintf(stderr, "Error: malloc failed\n");
 			break;
@@ -72,6 +74,19 @@ void error_f2(stack_t *head, int code, ...)
 			break;
 		case 11:
 			fprintf(stderr, "L%d: division by zero\n", va_arg(info, int));
+			break;
+		case 12:
+			fprintf(stderr, "L%d:  can't mul, stack too short\n", va_arg(info, int));
+			break;
+		case 13:
+			fprintf(stderr, "L%d:  can't mod, stack too short\n", va_arg(info, int));
+			break;
+		case 14:
+			fprintf(stderr, "L%d: can't pchar, value out of range\n",
+			va_arg(info, int));
+			break;
+		case 15:
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", va_arg(info, int));
 			break;
 	}
 	va_end(info);

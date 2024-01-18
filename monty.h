@@ -57,26 +57,34 @@ extern stack_t *head;
 extern int ln;
 
 /*commands handling*/
-void execute_command(char *line,  int line_number, stack_t **head);
+void execute_command(char *line,  int line_number, stack_t **head, int *pt);
 
 /*stack handling*/
 void add_node_stack(stack_t **head, unsigned int n);
+void add_q(stack_t **head, unsigned int n);
 void print_stack(stack_t **head, unsigned int n);
 void top_print(stack_t **head, unsigned int n);
 void pop_stack(stack_t **head, unsigned int ln);
 void swap_stack(stack_t **head, unsigned int ln);
-stack_t creathead(stack_t **head);
+int pushit(char *value, stack_t **head, int ln, char *line, int *type);
 void free_stack(stack_t *head);
 
 /*maths*/
 void add_stack(stack_t **head, unsigned int ln);
 void sub_stack(stack_t **head, unsigned int ln);
 void div_stack(stack_t **head, unsigned int ln);
+void mul_stack(stack_t **head, unsigned int ln);
+void mod_stack(stack_t **head, unsigned int ln);
+
+/*strings*/
+void pchar(stack_t **head, unsigned int ln);
+void pstr(stack_t **head, unsigned int ln);
+void rotl(stack_t **head, unsigned int ln);
+void rotr(stack_t **head, unsigned int ln);
 
 /*error handling*/
 void error_f(stack_t *head, int code, ...);
 void error_f2(stack_t *head, int code, ...);
-
 
 /*other tools*/
 int numbercheck(char *input);
